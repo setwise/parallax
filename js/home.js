@@ -1,8 +1,6 @@
 $(document).ready(function(){
   if ($('.parallax').length ){
 
-    $('.parallax').css("position","relative");
-
     var $window = $(window);
 
     if($('.parallaxScroll').length ){
@@ -16,19 +14,25 @@ $(document).ready(function(){
         }
 
         //css setup
-        $(this).css({"background-repeat":"no-repeat","background-position":"50% 0","background-attachment":"fixed","background-size":"110%"});
+        $(this).css({"background-repeat":"no-repeat","background-position":"50% 0","background-attachment":"fixed","background-size":"140%"});
 
 
         //scrolling function
         var $bgobj = $(this); // assigning the object
 
         $(window).scroll(function() {
-          var yPos =  -($window.scrollTop() / $bgobj.data('speed'));
+          var parallaxTop = $('.parallax').position();
+          var parallaxBottom = $('.parallax').position() + $('.parallax').height();
 
-          // Put together our final background position
-          var coords = '50% '+ yPos + 'px';
-          // Move the background
-          $bgobj.css({ backgroundPosition: coords });
+          //if(parallaxTop<$window.scrollTop() && parallaxBottom<$window.scrollBottom()){
+            var yPos =  -($window.scrollTop() / $bgobj.data('speed'));
+
+            // Put together our final background position
+            var coords = '50% '+ yPos + 'px';
+            // Move the background
+            $bgobj.css({ backgroundPosition: coords });
+
+        //  }
         });
       });
     }
