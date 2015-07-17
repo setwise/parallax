@@ -1,0 +1,189 @@
+
+/*****-----------------------------------------------*/
+/*	Variables
+/*****-----------------------------------------------*/
+@screen-xs-min: 480px;
+@screen-sm-min: 768px;
+@screen-md-min: 992px;
+@screen-lg-min: 1200px;
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+@black: #212121;
+@white: #ffffff;
+
+
+/*****-----------------------------------------------*/
+/*	Fixins
+/*****-----------------------------------------------*/
+
+.vertical-gradient(@startColor: rgba(0,0,0,0.10), @endColor: rgba(255,255,255,1.0), @startPoint: 0%, @endPoint:100%,@fallBack:#FFFFFF){
+	background: @fallBack; /* Old browsers */
+	background:  -moz-linear-gradient(top,  @startColor @startPoint, @endColor @endPoint); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(@startPoint,@startColor), color-stop(@endPoint,@endColor)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  @startColor @startPoint,@endColor @endPoint); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  @startColor @startPoint,@endColor @endPoint); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  @startColor @startPoint,@endColor @endPoint); /* IE10+ */
+	background: linear-gradient(to bottom,  @startColor @startPoint,@endColor @endPoint); /* W3C */
+	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=0 );  IE6-9 */
+}
+.horizontal-gradient(@startColor: rgba(0,0,0,0.10), @endColor: rgba(255,255,255,1.0), @startPoint: 0%, @endPoint:100%, @fallBack:#FFFFFF){
+	background: @fallBack; /* Old browsers */
+	background:  -moz-linear-gradient(left,  @startColor @startPoint, @endColor @endPoint); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(@startPoint,@startColor), color-stop(@endPoint,@endColor)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  @startColor @startPoint,@endColor @endPoint); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  @startColor @startPoint,@endColor @endPoint); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  @startColor @startPoint,@endColor @endPoint); /* IE10+ */
+	background: linear-gradient(to right,  @startColor @startPoint,@endColor @endPoint); /* W3C */
+	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=0 );  IE6-9 */
+}
+
+.inset-shadow(@horiz: -2px, @vert: -2px, @blur: 4px, @spread: 0px, @color: rgba(50, 50, 50, 0.75)){
+	-webkit-box-shadow: inset @horiz @vert  @blur @spread @color;
+	-moz-box-shadow:    inset @horiz @vert  @blur @spread @color;
+	box-shadow:         inset @horiz @vert  @blur @spread @color;
+}
+.drop-shadow(@horiz: -2px, @vert: -2px, @blur: 4px, @spread: 0px, @color: rgba(50, 50, 50, 0.75)){
+	-webkit-box-shadow: @horiz @vert  @blur @spread @color;
+	-moz-box-shadow: @horiz @vert  @blur @spread @color;
+	box-shadow: @horiz @vert  @blur @spread @color;
+}
+
+/*****-----------------------------------------------*/
+/*	Architecture
+/*****-----------------------------------------------*/
+
+body {
+	margin-top: 0;
+	background-color: @white;
+}
+.content{
+	background-color: @white;
+}
+
+/* Header
+/* --------------------------------------------------*/
+
+
+
+/* Footer
+/* --------------------------------------------------*/
+
+footer{
+	border-top: 1px solid @black;
+	text-align: center;
+
+	nav{
+		margin: 0 auto;
+		text-align: center;
+
+		ul{
+			list-style-type: none;
+
+			li{
+				display: inline;
+			}
+
+
+		}
+	}
+}
+
+
+/* Global Tags
+/* --------------------------------------------------*/
+
+h1{
+
+}
+
+h2{
+
+}
+
+p{
+
+}
+
+
+/* Global Components
+/* --------------------------------------------------*/
+
+
+/***** File Upload Buttons *****/
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 999px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+/***** Honeypots *****/
+
+#honeypotName{
+	display: none;
+}
+
+/***** Social - Vertically align Facebook and Twitter share buttons *****/
+.fb-share-button {
+   vertical-align: top !important;
+}
+.fb_iframe_widget span {
+    vertical-align: text-top !important;
+    position: relative;
+    	top: -2px;
+ }
+
+
+/*****-----------------------------------------------*/
+/*	Pages
+/*****-----------------------------------------------*/
+
+
+/***** Homepage
+/*-----------------------------------*/
+// #back {
+// 	min-width: 100%;
+// 	width: 100%;
+// 	background: url(/Users/noahcarter/Documents/Projects/ScrollProject/img/background.png) 50% 0 no-repeat fixed;
+// 	background-size: 110%;
+// }
+// #middle {
+// 	min-width: 100%;
+// 	width: 100%;
+// 	background: url(/Users/noahcarter/Documents/Projects/ScrollProject/img/middle.png) 50% 0 no-repeat fixed;
+// 	background-size: 110%;
+// }
+// #front {
+// 	width: 100%;
+// 	display: block;
+// }
+.parallax{
+	width: 1200px;
+	border: 1px solid green;
+
+	img{
+		width: 100%;
+		display: block;
+	}
+}
+
+/***** Example
+/*------------------------------------*/
