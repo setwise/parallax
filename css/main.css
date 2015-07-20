@@ -79,7 +79,7 @@ input[readonly] {
 /*-----------------------------------*/
 .parallax {
   margin-bottom: 800px;
-  width: 1200px;
+  width: 100%;
 }
 .parallax img {
   width: 100%;

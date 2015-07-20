@@ -14,15 +14,21 @@ $(document).ready(function(){
         }
 
         //css setup
-        $(this).css({"background-repeat":"no-repeat","background-position":"50% 0","background-attachment":"fixed","background-size":"100%"});
-
+        var scaleFactor = $(this).attr('data-scale');
+        $(this).css({"background-repeat":"no-repeat","background-position":"50% 0%","background-attachment":"fixed","background-size":scaleFactor + "%"});
 
         //scrolling function
         var $bgobj = $(this); // assigning the object
+        var imageHeight = $bgobj.height();
 
         $(window).scroll(function() {
           var parallaxTop = $('.parallax').position().top;
           var parallaxBottom = parallaxTop + $('.parallax').height();
+          var parallaxHeight = $('.parallax').height();
+
+
+          //determine speed
+          var speed = $bgobj.attr('data-speed') / 100;
 
           var maxHeight = $(window).height();
 
@@ -34,9 +40,7 @@ $(document).ready(function(){
             var yPos =  -($window.scrollTop());
           }else{
             //alert('middle');
-            var yPos =  -(($window.scrollTop()-(parallaxTop/2)) / $bgobj.data('speed'));
-            //yPos = 200;
-
+            var yPos =   -(($window.scrollTop()-(parallaxTop)) * speed);
           }
 
           // Put together our final background position
@@ -60,10 +64,10 @@ $(document).ready(function(){
         }
 
         //css setup
-        $(this).css({"background-repeat":"no-repeat","background-position":"50% 50%","background-attachment":"fixed","background-size":"110%"});
+        var scaleFactor = $(this).attr('data-scale');
+        $(this).css({"background-repeat":"no-repeat","background-position":"50% 50%","background-attachment":"fixed","background-size":scaleFactor + "%"});
 
-
-        //scrolling function
+        //mousemove function
         var $bgobj = $(this); // assigning the object
 
         $(window).mousemove(function(e) {
@@ -93,16 +97,27 @@ $(document).ready(function(){
             heightFactor = 0;
           }
 
-          // get speed
-          // Somehow relate mouse distance from center to available extra background percentage and adjust accordingly?
+          //parallax dimension variables
+          var parallaxBottom = parallaxTop + $('.parallax').height();
+          var parallaxHeight = $('.parallax').height();
+          var parallaxLeft = $('.parallax').position().left;
+          var parallaxTop = $('.parallax').position().top;
+          var parallaxWidth = $('.parallax').width();
 
-          var attr = $bgoj.attr('data-speed');
+          //determine mouse distance from center of parallax
+          var dxFromCenter = mouseX - parallaxLeft - parallaxWidth/2;
+          var dyFromCenter = mouseY - parallaxTop - parallaxHeight/2;
 
-          //alert('middle');
-          var yPos =  -($window.scrollTop() / $bgobj.data('speed'));
-          //yPos = 200;
+          //calculate movement speed factor
+          var speedx = $bgobj.attr('data-speed') / 100;
+          var speedy = $bgobj.attr('data-speed') / (50000/parallaxHeight);
+
+          //calculate new image position based on mouse movement and parallax dimensions
+          var xPos = 50 + (dxFromCenter / (parallaxWidth / 2) * (scaleFactor / 2) * speedx);
+          var yPos = parallaxTop * scaleFactor / 100 - (parallaxHeight / 2) - (dyFromCenter / (2 * parallaxHeight) * (scaleFactor / 2) * speedy) - $window.scrollTop();
+
           // Put together our final background position
-          var coords = '50% '+ yPos + 'px';
+          var coords = xPos + '% '+ yPos + 'px';
           // Move the background
           $bgobj.css({ backgroundPosition: coords });
 
