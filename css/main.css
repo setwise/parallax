@@ -78,8 +78,8 @@ input[readonly] {
 /***** Homepage
 /*-----------------------------------*/
 .parallax {
+  margin-bottom: 800px;
   width: 1200px;
-  border: 1px solid green;
 }
 .parallax img {
   width: 100%;
