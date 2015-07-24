@@ -30,29 +30,29 @@ $(document).ready(function(){
         //scrolling function
         var $bgobj = $(this); // assigning the object
 
-        $(window).scroll(function() {
-
-          var maxHeight = $(window).height();
-
-          if ($window.scrollTop()>parallaxBottom){
-            // Normal Scroll
-            var yPos =  -($window.scrollTop());
-          }else if ($window.scrollTop()>parallaxBottom){
-            // Normal Scroll
-            var yPos =  -($window.scrollTop());
-          }else{
-            //alert('middle');
-            var yPos = (parallaxTop - $window.scrollTop()) - (1 - speed) / 2 * parallaxTop + (1 - speed) / 2 * $window.scrollTop();
-
-          }
-
-          // Put together our final background position
-          var coords = parallaxLeft + 'px ' + yPos + 'px';
-
-          // Move the background
-          $bgobj.css({ backgroundPosition: coords });
-
-        });
+        // $(window).scroll(function() {
+        //
+        //   var maxHeight = $(window).height();
+        //
+        //   if ($window.scrollTop()>parallaxBottom){
+        //     // Normal Scroll
+        //     var yPos =  -($window.scrollTop());
+        //   }else if ($window.scrollTop()>parallaxBottom){
+        //     // Normal Scroll
+        //     var yPos =  -($window.scrollTop());
+        //   }else{
+        //     //alert('middle');
+        //     var yPos = (parallaxTop - $window.scrollTop()) - (1 - speed) / 2 * parallaxTop + (1 - speed) / 2 * $window.scrollTop();
+        //
+        //   }
+        //
+        //   // Put together our final background position
+        //   var coords = parallaxLeft + 'px ' + yPos + 'px';
+        //
+        //   // Move the background
+        //   $bgobj.css({ backgroundPosition: coords });
+        //
+        // });
       });
     }
 
