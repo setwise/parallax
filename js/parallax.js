@@ -13,22 +13,24 @@ $(document).ready(function(){
           $(this).css("background-image","url("+attr+")");
         }
 
+        //variable setup
+        var parallaxTop = $('.parallax').position().top;
+        var parallaxBottom = parallaxTop + $('.parallax').height();
+        var parallaxHeight = $('.parallax').height();
+        var parallaxLeft = $('.parallax').position().left;
+        var speed = $(this).attr('data-speed') / 100;
+
         //css setup
         var scaleFactor = $(this).attr('data-scale');
-        $(this).css({"background-repeat":"no-repeat","background-position":"50% 0%","background-attachment":"fixed","background-size":scaleFactor + "%"});
+        var initialPosition = parallaxTop - (1 - speed) / 2 * parallaxTop;
+        var coords = parallaxLeft + 'px ' + initialPosition + 'px';
+
+        $(this).css({"background-repeat":"no-repeat","background-position": coords,"background-attachment":"fixed","background-size":scaleFactor + "%"});
 
         //scrolling function
         var $bgobj = $(this); // assigning the object
-        var imageHeight = $bgobj.height();
 
         $(window).scroll(function() {
-          var parallaxTop = $('.parallax').position().top;
-          var parallaxBottom = parallaxTop + $('.parallax').height();
-          var parallaxHeight = $('.parallax').height();
-
-
-          //determine speed
-          var speed = $bgobj.attr('data-speed') / 100;
 
           var maxHeight = $(window).height();
 
@@ -40,14 +42,15 @@ $(document).ready(function(){
             var yPos =  -($window.scrollTop());
           }else{
             //alert('middle');
-            var yPos =   -(($window.scrollTop()-(parallaxTop)) * speed);
+            var yPos = (parallaxTop - $window.scrollTop()) - (1 - speed) / 2 * parallaxTop + (1 - speed) / 2 * $window.scrollTop();
+
           }
 
           // Put together our final background position
-          var coords = '50% '+ yPos + 'px';
+          var coords = parallaxLeft + 'px ' + yPos + 'px';
+
           // Move the background
           $bgobj.css({ backgroundPosition: coords });
-
 
         });
       });
@@ -69,7 +72,35 @@ $(document).ready(function(){
 
         //mousemove function
         var $bgobj = $(this); // assigning the object
+        var scrollValue = 0;
 
+        $(window).scroll(function(event) {
+          var parallaxTop = $('.parallax').position().top;
+          var parallaxBottom = parallaxTop + $('.parallax').height();
+          var parallaxHeight = $('.parallax').height();
+
+          //determine speed
+          var speed = $bgobj.attr('data-speed') / 100;
+
+          var maxHeight = $(window).height();
+
+          if ($window.scrollTop()>parallaxBottom){
+            // Normal Scroll
+            var yPos =  -($window.scrollTop());
+          }else if ($window.scrollTop()>parallaxBottom){
+            // Normal Scroll
+            var yPos =  -($window.scrollTop());
+          }else{
+            //alert('middle');
+            var yPos =   -(($window.scrollTop()-(parallaxTop)));
+
+            // Put together our final background position
+            var coords = $bgobj.css("background-position-x") + 'px ' + yPos + 'px';
+            // Move the background
+            $bgobj.css({ backgroundPosition: coords });
+          }
+
+        });
         $(window).mousemove(function(e) {
 
           var windowHeight = $(window).height();

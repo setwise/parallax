@@ -1,0 +1,24 @@
+Next, add layers using `<div>` elements with the class `parallaxBackground` to indicate an image to be animated.  To make make operation simple, we have included several custom data attibutes for an image source, image scaling, and animation speed, which can be manipulated to make sure that your animation looks good.
+
+    <div class="parallaxBackground" data-image="img/background.png" data-scale="110" data-speed="90"> ... </div>
+
+Finally, add a nested `<img>` element to indicate an image which will not be animated.
+
+    <img src="img/foreground.png" />
+
+Remember to nest your divs in order that they will be layered!
+
+    <div class="parallax parallaxMouse">  
+      <div class="parallaxBackground" data-image="img/background.png" data-scale="130" data-speed="30">  
+        <div class="parallaxBackground" data-image="img/middle.png" data-scale="110" data-speed="40">  
+          <img src="img/foreground.png"/>  
+        </div>  
+      </div>  
+    </div>
+
+
+# Minimal Code Manipulation
+We have designed this plugin to be easy to use without extensive code knowledge.  Simply edit the `data-image` `data-scale` and `data-speed` attributes on each image, and be on your merry way!
+
+# Authors and Contributors
+Plugin designed by Setwise LLC
