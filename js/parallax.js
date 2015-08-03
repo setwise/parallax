@@ -30,6 +30,7 @@ $(document).ready(function(){
         //scrolling function
         var $bgobj = $(this); // assigning the object
 
+
         $(window).scroll(function() {
 
           var maxHeight = $(window).height();
