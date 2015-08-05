@@ -1,0 +1,92 @@
+/*****-----------------------------------------------*/
+/*	Variables
+/*****-----------------------------------------------*/
+/*****-----------------------------------------------*/
+/*	Fixins
+/*****-----------------------------------------------*/
+/*****-----------------------------------------------*/
+/*	Architecture
+/*****-----------------------------------------------*/
+body {
+  margin-top: 0;
+  background-color: #ffffff;
+}
+.content {
+  background-color: #ffffff;
+}
+/* Header
+/* --------------------------------------------------*/
+/* Footer
+/* --------------------------------------------------*/
+footer {
+  border-top: 1px solid #212121;
+  text-align: center;
+}
+footer nav {
+  margin: 0 auto;
+  text-align: center;
+}
+footer nav ul {
+  list-style-type: none;
+}
+footer nav ul li {
+  display: inline;
+}
+/* Global Tags
+/* --------------------------------------------------*/
+/* Global Components
+/* --------------------------------------------------*/
+/***** File Upload Buttons *****/
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 999px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+/***** Honeypots *****/
+#honeypotName {
+  display: none;
+}
+/***** Social - Vertically align Facebook and Twitter share buttons *****/
+.fb-share-button {
+  vertical-align: top !important;
+}
+.fb_iframe_widget span {
+  vertical-align: text-top !important;
+  position: relative;
+  top: -2px;
+}
+/*****-----------------------------------------------*/
+/*	Pages
+/*****-----------------------------------------------*/
+/***** Homepage
+/*-----------------------------------*/
+h1 {
+  text-align: center;
+}
+.parallax {
+  margin-bottom: 800px;
+  width: 100%;
+}
+.parallax img {
+  width: 100%;
+  display: block;
+}
+/***** Example
+/*------------------------------------*/

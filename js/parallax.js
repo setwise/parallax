@@ -5,55 +5,77 @@ $(document).ready(function(){
 
     if($('.parallaxScroll').length ){
 
+      // Check for screen size
+      var widthAttribute = $('.parallaxScroll').attr('data-width');
+      var parallaxOK = true;
+      if (typeof widthAttribute !== typeof undefined && widthAttribute !== false) {
+        var nonMobile = window.matchMedia( "(min-width: "+widthAttribute+")" );
+        if (nonMobile.matches){
+        }else{
+          parallaxOK = false;
+        }
+      }
+
       $('.parallaxScroll .parallaxBackground').each(function(){
 
         //define background image
         var attr = $(this).attr('data-image');
         if (typeof attr !== typeof undefined && attr !== false) {
           $(this).css("background-image","url("+attr+")");
+          $(this).css("background-size","100%");
         }
 
-        //variable setup
-        var parallaxTop = $('.parallax').position().top;
-        var parallaxBottom = parallaxTop + $('.parallax').height();
-        var parallaxHeight = $('.parallax').height();
-        var parallaxLeft = $('.parallax').position().left;
-        var speed = $(this).attr('data-speed') / 100;
 
-        //css setup
-        var scaleFactor = $(this).attr('data-scale');
-        var initialPosition = parallaxTop - (1 - speed) / 2 * parallaxTop;
-        var coords = parallaxLeft + 'px ' + initialPosition + 'px';
+        if (parallaxOK == true){
 
-        $(this).css({"background-repeat":"no-repeat","background-position": coords,"background-attachment":"fixed","background-size":scaleFactor + "%"});
+          //variable setup
+          var parallaxTop = $('.parallax').position().top;
+          var parallaxBottom = parallaxTop + $('.parallax').height();
+          var parallaxHeight = $('.parallax').height();
+          var parallaxLeft = $('.parallax').position().left;
+          var speed = $(this).attr('data-speed') / 100;
 
-        //scrolling function
-        var $bgobj = $(this); // assigning the object
+          //css setup
+          var scaleFactor = $(this).attr('data-scale');
+          var initialPosition = parallaxTop - (1 - speed) / 2 * parallaxTop;
+          var coords = parallaxLeft + 'px ' + initialPosition + 'px';
 
-        $(window).scroll(function() {
+          $(this).css({"background-repeat":"no-repeat","background-position": coords,"background-attachment":"fixed","background-size":scaleFactor + "%"});
 
-          var maxHeight = $(window).height();
+          //scrolling function
+          var $bgobj = $(this); // assigning the object
 
-          if ($window.scrollTop()>parallaxBottom){
-            // Normal Scroll
-            var yPos =  -($window.scrollTop());
-          }else if ($window.scrollTop()>parallaxBottom){
-            // Normal Scroll
-            var yPos =  -($window.scrollTop());
-          }else{
-            //alert('middle');
-            var yPos = (parallaxTop - $window.scrollTop()) - (1 - speed) / 2 * parallaxTop + (1 - speed) / 2 * $window.scrollTop();
+          $(window).scroll(function() {
 
-          }
+            var maxHeight = $(window).height();
 
-          // Put together our final background position
-          var coords = parallaxLeft + 'px ' + yPos + 'px';
+            if ($window.scrollTop()>parallaxBottom){
+              // Normal Scroll
+              var yPos =  -($window.scrollTop());
+            }else if ($window.scrollTop()>parallaxBottom){
+              // Normal Scroll
+              var yPos =  -($window.scrollTop());
+            }else{
+              //alert('middle');
+              var yPos = (parallaxTop - $window.scrollTop()) - (1 - speed) / 2 * parallaxTop + (1 - speed) / 2 * $window.scrollTop();
 
-          // Move the background
-          $bgobj.css({ backgroundPosition: coords });
+            }
 
-        });
+            // Put together our final background position
+            var coords = parallaxLeft + 'px ' + yPos + 'px';
+
+            // Move the background
+            $bgobj.css({ backgroundPosition: coords });
+
+          });
+
+        }
+
       });
+
+      // Initial scroll for positioning setup
+      $(window).scrollTop("1px");
+      $(window).scrollTop("0px");
     }
 
     if($('.parallaxMouse').length ){
